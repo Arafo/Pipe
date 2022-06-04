@@ -1,8 +1,8 @@
-//
-//  Dependencies.swift
-//  Config
-//
-//  Created by Marcen, Rafael on 4/6/22.
-//
+import ProjectDescription
 
-import Foundation
+let dependencies = Dependencies(
+    swiftPackageManager: [
+        .remote(url: "https://github.com/Arafo/LightSessionKit", requirement: .branch("main"))
+    ],
+    platforms: [.iOS]
+)

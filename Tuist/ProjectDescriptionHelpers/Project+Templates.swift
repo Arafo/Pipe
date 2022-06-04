@@ -19,7 +19,7 @@ extension Project {
         targets += frameworksTargets.flatMap({ makeFrameworkTargets(name: $0, platform: platform) })
         
         return Project(name: name,
-                       organizationName: "arafo.com",
+                       organizationName: "Rafa Marcén (Personal Team)",
                        targets: targets)
     }
 
@@ -55,8 +55,6 @@ extension Project {
         platform: Platform,
         dependencies: [TargetDependency]
     ) -> [Target] {
-        print(dependencies)
-        
         let platform: Platform = platform
         let infoPlist: [String: InfoPlist.Value] = [
             "CFBundleShortVersionString": "1.0",
@@ -73,7 +71,10 @@ extension Project {
             infoPlist: .extendingDefault(with: infoPlist),
             sources: ["Targets/\(name)/Sources/**"],
             resources: ["Targets/\(name)/Resources/**"],
-            dependencies: dependencies
+            dependencies: dependencies,
+            settings: .settings(base: .init()
+                .automaticCodeSigning(devTeam: "Rafa Marcén (Personal Team)")
+            )
         )
 
         let testTarget = Target(

@@ -73,7 +73,7 @@ extension Project {
             resources: ["Targets/\(name)/Resources/**"],
             dependencies: dependencies,
             settings: .settings(base: .init()
-                .automaticCodeSigning(devTeam: "Rafa Marcén (Personal Team)")
+                .automaticCodeSigning(devTeam: Environment.developmentTeam.getString(default: ""))
             )
         )
 
